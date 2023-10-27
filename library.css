@@ -30,3 +30,11 @@ form {
     row-gap: 10px;
     padding: 0.4rem;
 }
+
+input:valid {
+    border: 1px solid green;
+}
+
+input:invalid {
+    border: 1px solid red;
+}
