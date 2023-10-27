@@ -15,10 +15,10 @@
       <input type="text" id="book-title" name="Title" required>
 
       <label for="book-author">Author: </label>
-      <input type="text" id="book-author" name="Author" required>
+      <input type="text" id="book-author" name="Author" required minlength="1">
       <div>
         <button class="confirmButton" id="confirm-button">Confirm</button>
-        <button class="cancelButton" id="cancel-button" formmethod="dialog">Cancel</button>
+        <button class="cancelButton" id="cancel-button" minlength="1">Cancel</button>
       </div>
     </form>
   </dialog>
