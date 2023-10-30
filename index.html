@@ -16,6 +16,19 @@
 
       <label for="book-author">Author: </label>
       <input type="text" id="book-author" name="Author" required minlength="1">
+
+      <label for="book-pages">Pages: </label>
+      <input type="number" name="Pages" id="book-pages" min="0" required>
+
+      <div>
+        <label for="yes-status">Yes</label>
+        <input type="radio" name="Reading-Status" id="yes-status" value="yes">
+      </div>
+
+      <div>
+        <label for="no-status">No </label>
+        <input type="radio" name="Reading-Status" id="no-status" value="no">
+      </div>
       <div>
         <button class="confirmButton" id="confirm-button">Confirm</button>
         <button class="cancelButton" id="cancel-button" minlength="1">Cancel</button>
