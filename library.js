@@ -18,8 +18,8 @@ function Book(title, author, pages){
 Book.prototype.ReadStatus = function () {
     for (const radioButton of noBox){
         if (radioButton.checked){
-            this.read = radioButton.value;
-            console.log(this.read)
+            this.readStatus = radioButton.value;
+            return this.readStatus;
         }
     }
 }
@@ -60,8 +60,25 @@ function addToDOM(newBook){
     titleParagraph.innerText = 'Title: ' + newBook.title;
     autherParagraph.innerText = 'Author: ' + newBook.author;
     noOfPages.innerText = 'Pages: ' + newBook.pages;
-    div.append(titleParagraph, autherParagraph, noOfPages);
+    div.append(titleParagraph, autherParagraph, noOfPages, ReadStatusOfBook(newBook));
     document.body.appendChild(div);
+}
+
+function ReadStatusOfBook(newBook){
+    const input = document.createElement('input');
+    input.style.width = '20%';
+    input.type = 'range';
+    input.max = '1';
+    input.setAttribute('id', 'choice');
+    input.setAttribute('name', 'choice');
+
+    if (newBook.ReadStatus() == 'yes'){
+        input.value = 1;
+    }
+    else {
+        input.value = 0;
+    }
+    return input;
 }
 
 addButton.addEventListener('click', () => {
