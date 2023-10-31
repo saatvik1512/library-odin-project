@@ -38,7 +38,7 @@ function addBookToLibrary(newBook){
                 myLibrary.push(newBook);
             }
             else if (myLibrary[index].title.toLowerCase() == newBook.title.toLowerCase()){
-                console.log("already exist");
+                alert("already exist");
                 break;
             }
         }
@@ -47,7 +47,11 @@ function addBookToLibrary(newBook){
 function addToDOM(newBook){
     const div = document.createElement('div');
     div.setAttribute('class', 'book-container');
-
+    
+    const img = document.createElement('img');
+    img.src = 'download-content/delete.svg'
+    img.style.width = '30px';
+    img.style.height = 'auto'
     const autherParagraph = document.createElement('p');
     autherParagraph.setAttribute('class', 'author');
 
@@ -57,10 +61,14 @@ function addToDOM(newBook){
     const noOfPages = document.createElement('p');
     noOfPages.setAttribute('class', 'pages');
 
+
     titleParagraph.innerText = 'Title: ' + newBook.title;
     autherParagraph.innerText = 'Author: ' + newBook.author;
     noOfPages.innerText = 'Pages: ' + newBook.pages;
-    div.append(titleParagraph, autherParagraph, noOfPages, ReadStatusOfBook(newBook));
+
+    const YesOrNo = document.createElement('p');
+    YesOrNo.innerText = 'Yes Or No'
+    div.append(img, titleParagraph, autherParagraph, noOfPages, YesOrNo, ReadStatusOfBook(newBook));
     document.body.appendChild(div);
 }
 

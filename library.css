@@ -42,3 +42,9 @@ input:valid {
 input:invalid {
     border: 1px solid red;
 }
+
+.allPelements {
+    margin: 0;
+    font-size: 1.1rem;
+    font-family: monospace;
+}
