@@ -6,6 +6,7 @@ const authorBox = document.querySelector('#book-author');
 const titleBox = document.querySelector('#book-title');
 const pagesBox = document.querySelector('#book-pages');
 const noBox = document.querySelectorAll('input[name="Reading-Status"]');
+const mainContainer = document.querySelector('.main-book-container');
 
 const myLibrary = [];
 
@@ -28,13 +29,13 @@ function addBookToLibrary(newBook){
     //if array is empty then place that book
     //else check if it contains book or not
     if(myLibrary.length == 0){
-        addToDOM(newBook);
+        addToDOM(newBook, 0);
         myLibrary.push(newBook);
     }
     else {
         for (const index in myLibrary){
-            if (myLibrary[index].title.toLowerCase() !== newBook.title.toLowerCase() && myLibrary.indexOf(myLibrary[index]) == myLibrary.length - 1){
-                addToDOM(newBook);
+            if (myLibrary[index].title.toLowerCase() !== newBook.title.toLowerCase() && index == myLibrary.length - 1){
+                addToDOM(newBook, Number(index) + 1);
                 myLibrary.push(newBook);
             }
             else if (myLibrary[index].title.toLowerCase() == newBook.title.toLowerCase()){
@@ -44,14 +45,18 @@ function addBookToLibrary(newBook){
         }
     }
 }
-function addToDOM(newBook){
+function addToDOM(newBook, index){
     const div = document.createElement('div');
     div.setAttribute('class', 'book-container');
-    
+    div.dataset.number = index;
+
     const img = document.createElement('img');
-    img.src = 'download-content/delete.svg'
+    img.src = 'download-content/delete.svg';
     img.style.width = '30px';
-    img.style.height = 'auto'
+    img.style.height = 'auto';
+    img.style.cursor = 'pointer';
+
+    
     const autherParagraph = document.createElement('p');
     autherParagraph.setAttribute('class', 'author');
 
@@ -69,7 +74,11 @@ function addToDOM(newBook){
     const YesOrNo = document.createElement('p');
     YesOrNo.innerText = 'Yes Or No'
     div.append(img, titleParagraph, autherParagraph, noOfPages, YesOrNo, ReadStatusOfBook(newBook));
-    document.body.appendChild(div);
+    mainContainer.appendChild(div);
+
+    img.addEventListener('click', (e) => {
+        div.remove()
+    })
 }
 
 function ReadStatusOfBook(newBook){
@@ -79,6 +88,7 @@ function ReadStatusOfBook(newBook){
     input.max = '1';
     input.setAttribute('id', 'choice');
     input.setAttribute('name', 'choice');
+
 
     if (newBook.ReadStatus() == 'yes'){
         input.value = 1;
@@ -103,7 +113,7 @@ cancelBtn.addEventListener('click', (e) => {
 //new book is created and displayed in new tab
 confirmBtn.addEventListener('click', (event) => {
         let newBook = new Book(titleBox.value, authorBox.value, pagesBox.value);
-        if(titleBox.value != '' && authorBox.value != ''){
+        if(titleBox.value != '' && authorBox.value != '' && pagesBox.value != ''){
             addBookToLibrary(newBook);
         }
         else {

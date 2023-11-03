@@ -1,8 +1,5 @@
 body {
     box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
     flex-wrap: wrap;
 }
 
@@ -14,6 +11,11 @@ body {
     border-radius: 50%;
     padding: 1rem;
     font-size: 2rem;
+}
+
+.main-book-container {
+    display: flex;
+    gap: 1rem;
 }
 
 .book-container {
