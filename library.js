@@ -77,6 +77,7 @@ function addToDOM(newBook, index){
     mainContainer.appendChild(div);
 
     img.addEventListener('click', (e) => {
+        myLibrary.splice(div.dataset.number ,1)
         div.remove()
     })
 }
