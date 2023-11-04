@@ -52,9 +52,7 @@ function addToDOM(newBook, index){
 
     const img = document.createElement('img');
     img.src = 'download-content/delete.svg';
-    img.style.width = '30px';
-    img.style.height = 'auto';
-    img.style.cursor = 'pointer';
+    img.setAttribute('class', 'delete-content');
 
     
     const autherParagraph = document.createElement('p');
