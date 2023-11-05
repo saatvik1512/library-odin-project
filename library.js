@@ -65,9 +65,9 @@ function addToDOM(newBook, index){
     noOfPages.setAttribute('class', 'pages');
 
 
-    titleParagraph.innerText = 'Title: ' + newBook.title;
-    autherParagraph.innerText = 'Author: ' + newBook.author;
-    noOfPages.innerText = 'Pages: ' + newBook.pages;
+    titleParagraph.innerText = newBook.title;
+    autherParagraph.innerText = newBook.author;
+    noOfPages.innerText = newBook.pages;
 
     const YesOrNo = document.createElement('p');
     YesOrNo.innerText = 'Yes Or No'
@@ -75,9 +75,18 @@ function addToDOM(newBook, index){
     mainContainer.appendChild(div);
 
     img.addEventListener('click', (e) => {
-        myLibrary.splice(div.dataset.number ,1)
-        div.remove()
+        myLibrary.splice(div.dataset.number ,1);
+        div.remove();
+        setDataAttr();
     })
+}
+
+function setDataAttr() {
+    let i = 0;
+    for (const child of mainContainer.children){
+        child.dataset.number = i;
+        i++;
+    }
 }
 
 function ReadStatusOfBook(newBook){
