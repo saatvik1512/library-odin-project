@@ -64,7 +64,6 @@ function addToDOM(newBook, index){
     const noOfPages = document.createElement('p');
     noOfPages.setAttribute('class', 'pages');
 
-
     titleParagraph.innerText = newBook.title;
     autherParagraph.innerText = newBook.author;
     noOfPages.innerText = newBook.pages;
@@ -91,7 +90,6 @@ function setDataAttr() {
 
 function ReadStatusOfBook(newBook){
     const input = document.createElement('input');
-    input.style.width = '20%';
     input.type = 'range';
     input.max = '1';
     input.setAttribute('id', 'choice');
