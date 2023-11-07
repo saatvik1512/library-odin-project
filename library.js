@@ -68,9 +68,8 @@ function addToDOM(newBook, index){
     autherParagraph.innerText = newBook.author;
     noOfPages.innerText = newBook.pages;
 
-    const YesOrNo = document.createElement('p');
-    YesOrNo.innerText = 'Yes Or No'
-    div.append(img, titleParagraph, autherParagraph, noOfPages, YesOrNo, ReadStatusOfBook(newBook));
+
+    div.append(img, titleParagraph, autherParagraph, noOfPages, ReadStatusOfBook(newBook));
     mainContainer.appendChild(div);
 
     img.addEventListener('click', (e) => {
@@ -89,21 +88,19 @@ function setDataAttr() {
 }
 
 function ReadStatusOfBook(newBook){
-    const input = document.createElement('input');
-    input.type = 'range';
-    input.max = '1';
-    input.setAttribute('id', 'choice');
-    input.setAttribute('name', 'choice');
-
-
+    const yesOrNo = document.createElement('p');
+    yesOrNo.style.color = 'white'
     if (newBook.ReadStatus() == 'yes'){
-        input.value = 1;
+        yesOrNo.innerText = 'Read'
+        yesOrNo.style.backgroundColor = 'green'
     }
     else {
-        input.value = 0;
+        yesOrNo.innerText = 'Not Read'
+        yesOrNo.style.backgroundColor = 'red'
     }
-    return input;
+    return yesOrNo;
 }
+
 
 addButton.addEventListener('click', () => {
     dialog.showModal();
