@@ -69,7 +69,19 @@ function addToDOM(newBook, index){
     noOfPages.innerText = newBook.pages;
 
 
-    div.append(img, titleParagraph, autherParagraph, noOfPages, ReadStatusOfBook(newBook));
+    const button = ReadStatusOfBook(newBook);
+    button.onclick = () => {
+        if (button.innerText == 'Read'){
+            button.style.backgroundColor = 'red';
+            button.innerText = 'Not Yet'
+        }
+        else {
+            button.style.backgroundColor = 'green';
+            button.innerText = 'Read';
+        }
+    }
+
+    div.append(img, titleParagraph, autherParagraph, noOfPages, button);
     mainContainer.appendChild(div);
 
     img.addEventListener('click', (e) => {
@@ -89,13 +101,13 @@ function setDataAttr() {
 
 function ReadStatusOfBook(newBook){
     const yesOrNo = document.createElement('p');
-    yesOrNo.style.color = 'white'
+    yesOrNo.setAttribute('class', 'read');
     if (newBook.ReadStatus() == 'yes'){
         yesOrNo.innerText = 'Read'
         yesOrNo.style.backgroundColor = 'green'
     }
     else {
-        yesOrNo.innerText = 'Not Read'
+        yesOrNo.innerText = 'Not Yet'
         yesOrNo.style.backgroundColor = 'red'
     }
     return yesOrNo;

@@ -103,11 +103,9 @@ header #heading-title {
     animation: mymove 0.3s 3;
 }
 
-#choice {
-    width: 20%;
-    accent-color: coral;
-    justify-self: right;
-    font-size: 2rem;
+.read {
+    color: white !important;
+    cursor: pointer;
 }
 
 @keyframes mymove {
