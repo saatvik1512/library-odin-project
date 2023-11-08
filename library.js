@@ -73,11 +73,13 @@ function addToDOM(newBook, index){
     button.onclick = () => {
         if (button.innerText == 'Read'){
             button.style.backgroundColor = 'red';
-            button.innerText = 'Not Yet'
+            button.innerText = 'Not Yet';
+            newBook.readStatus = 'no';
         }
         else {
             button.style.backgroundColor = 'green';
             button.innerText = 'Read';
+            newBook.readStatus = 'yes';
         }
     }
 
