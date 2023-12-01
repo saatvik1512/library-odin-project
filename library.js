@@ -10,17 +10,19 @@ const mainContainer = document.querySelector('.main-book-container');
 
 const myLibrary = [];
 
-function Book(title, author, pages){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-}
+class Book {
+    constructor(title, author, pages){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+    }
 
-Book.prototype.ReadStatus = function () {
-    for (const radioButton of noBox){
-        if (radioButton.checked){
-            this.readStatus = radioButton.value;
-            return this.readStatus;
+    ReadStatus(){
+        for (const radioButton of noBox){
+            if (radioButton.checked){
+                this.readStatus = radioButton.value;
+                return this.readStatus;
+            }
         }
     }
 }
